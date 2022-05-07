@@ -26,9 +26,11 @@ create-virtualenv: check-python-dependencies
 
 pip-compile:
 	${PIP_COMPILE_EXEC} requirements/requirements.in --output-file requirements.txt
+	${PIP_COMPILE_EXEC} requirements/requirements-docker.in --output-file requirements-docker.txt
 
 pip-compile-upgrade:
 	${PIP_COMPILE_EXEC} -U requirements/requirements.in --output-file requirements.txt
+	${PIP_COMPILE_EXEC} -U requirements/requirements-docker.in --output-file requirements-docker.txt
 
 pip-install:
 	${PIP_EXEC} install -r requirements.txt
