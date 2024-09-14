@@ -24,25 +24,20 @@ create-virtualenv: check-python-dependencies
 	${PIP_EXEC} install -U pip
 	${PIP_EXEC} install pip-tools black
 
-pip-compile:
-	${PIP_COMPILE_EXEC} requirements/requirements.in --output-file requirements.txt
-	${PIP_COMPILE_EXEC} requirements/requirements-docker.in --output-file requirements-docker.txt
-
-pip-compile-upgrade:
-	${PIP_COMPILE_EXEC} -U requirements/requirements.in --output-file requirements.txt
-	${PIP_COMPILE_EXEC} -U requirements/requirements-docker.in --output-file requirements-docker.txt
-
 pip-install:
 	${PIP_EXEC} install -r requirements.txt
 
 clean:
 	pyenv uninstall -f ${VENV_NAME}
 
-black:
-	${BLACK_EXEC} .
-
-black-check:
-	${BLACK_EXEC} --check .
-
 run-notebooks:
 	${NOTEBOOK_CMD} notebooks
+
+vanilla-venv:
+	python3 -m venv venv
+
+vanilla-install:
+	venv/bin/pip install -r requirements.txt
+
+vanilla-run-notebooks:
+	venv/bin/jupyter notebook notebooks
