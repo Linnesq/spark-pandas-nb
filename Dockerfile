@@ -1,7 +1,5 @@
-FROM jupyter/pyspark-notebook:hub-2.2.2 as base
+FROM quay.io/jupyter/pyspark-notebook:spark-3.5.2 as base
 WORKDIR /app
-COPY requirements-docker.txt .
-RUN pip install -r requirements-docker.txt
 
 # File etc
 COPY data data

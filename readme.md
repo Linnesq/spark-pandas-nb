@@ -1,4 +1,4 @@
-# Install & Setup (host)
+# Install & Setup (host, more complex)
 
 You'll need Java 8 installed.
 
@@ -7,6 +7,13 @@ If you have pyenv and pyenv-virtualenv installed, you can do the following to in
 ```
 make create-virtualenv
 make pip-install
+```
+
+Alternatively, you can try a more vanilla option, assuming you have a python3 binary on your host:
+
+```
+make vanilla-venv
+make vanilla-install
 ```
 
 Otherwise you'll need to look at the commands in the Makefile and figure out how to adapt them to your setup - for example:
@@ -20,7 +27,7 @@ Before running the notebooks, check if `JAVA_HOME` is set (you're expecting an o
 
 If that's all good, run the notebook server: `make run-notebooks`
 
-# Install & Setup (docker)
+# Install & Setup (docker, simpler)
 
 If you don't want to spend time on installing java and python etc, and you have docker installed (with docker-compose), 
 then getting this project running locally should be as simple as:
